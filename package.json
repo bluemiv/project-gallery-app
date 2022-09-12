@@ -1,0 +1,17 @@
+{
+  "name": "gallery-app",
+  "version": "0.1.0",
+  "packageManager": "yarn@3.2.3",
+  "workspaces": {
+    "packages": [
+      "apps/**",
+      "packages/**"
+    ]
+  },
+  "scripts": {
+    "server": "yarn workspace @gallery-app/server"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1"
+  }
+}
