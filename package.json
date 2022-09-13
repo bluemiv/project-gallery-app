@@ -9,6 +9,7 @@
     ]
   },
   "scripts": {
+    "web": "yarn workspace @gallery-app/web",
     "server": "yarn workspace @gallery-app/server"
   },
   "devDependencies": {
