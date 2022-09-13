@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css, ThemeType } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
   html, body, #root {
     padding: 0;
     margin: 0;
@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
-  
+
   ul, ol {
     list-style: none;
   }
@@ -18,21 +18,37 @@ const GlobalStyle = createGlobalStyle`
   a, button {
     cursor: pointer;
   }
-  
+
   a {
     text-decoration: none;
   }
-  
+
   #root {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    
-    .main-container {
-      flex: 1;
-      display: flex;
-    }
   }
+
+  ${({ theme }) => {
+    const { fontColor, backgroundColor, primaryColor } = theme.style;
+    return css`
+      html,
+      body,
+      #root {
+        color: ${fontColor};
+        background-color: ${backgroundColor};
+      }
+
+      a {
+        color: ${fontColor};
+        transition: color 0.25s ease-in-out;
+
+        &:hover {
+          color: ${primaryColor.basic};
+        }
+      }
+    `;
+  }}
 `;
 
 export default GlobalStyle;

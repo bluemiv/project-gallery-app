@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
 
-export const StyledMain = styled.header`
-  width: 320px;
+export const StyledMain = styled.main`
+  flex: 1;
+  width: 100%;
   display: flex;
 
   ${({ theme }) => {

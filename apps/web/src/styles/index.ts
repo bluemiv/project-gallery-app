@@ -9,14 +9,28 @@ const padding = {
   lg: '2rem',
 };
 
+const fontSize = {
+  md: '1rem',
+  lg: '1.5rem',
+  xl: '2rem',
+};
+
 export const commonStyle = {
   padding,
+  fontSize,
 };
 
 export const lightTheme = {
   mode: LIGHT_THEME,
   style: {
     ...commonStyle,
+    fontColor: '#212529',
+    backgroundColor: '#ffffff',
+    primaryColor: {
+      light: '#dbe4ff',
+      basic: '#4263eb',
+      dark: '#364fc7',
+    },
   },
 };
 
@@ -24,6 +38,13 @@ export const darkTheme = {
   mode: DARK_THEME,
   style: {
     ...commonStyle,
+    fontColor: '#f8f9fa',
+    backgroundColor: '#495057',
+    primaryColor: {
+      light: '#edf2ff',
+      basic: '#748ffc',
+      dark: '#4263eb',
+    },
   },
 };
 
