@@ -1,14 +1,21 @@
 import { ControllerType } from '../types';
 import { parsePath } from '../utils';
+import { FileService } from '../service';
 
 const prefix = '/photo';
 const getPath = parsePath(prefix);
+
+const fileService = new FileService();
 
 const get: ControllerType = [
   [
     getPath('/'),
     (req, res) => {
-      res.send('hello');
+      const { dir } = req?.query;
+      const fs = fileService.readImages(dir);
+      return res.json({
+        results: fs,
+      });
     },
   ],
 ];

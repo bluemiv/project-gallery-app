@@ -1,11 +1,21 @@
 import express from 'express';
-import photoController from './controllers/photo-controller';
+import { directoryController, photoController, videoController } from './controller';
+import { readConfig } from './config';
 
-const server = express();
-const port = 3000;
+const startServer = async () => {
+  await readConfig();
 
-photoController['get'].map((c) => server.get(...c));
+  const { SERVER_PORT, STORAGE_PATH } = process.env;
+  const server = express();
 
-server.listen(port, () => {
-  console.log(`Start server http://localhost:3000`);
-});
+  server.use(express.static(STORAGE_PATH as string));
+  photoController['get'].map((c) => server.get(...c));
+  videoController['get'].map((c) => server.get(...c));
+  directoryController['get'].map((c) => server.get(...c));
+
+  server.listen(SERVER_PORT, () => {
+    console.log(`Start server http://localhost:${SERVER_PORT}`);
+  });
+};
+
+startServer();

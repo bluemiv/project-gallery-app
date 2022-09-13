@@ -8,6 +8,8 @@
 **/.vs_code
 **/.idea
 
+**/.env.local
+
 # zero install
 .yarn/*
 !.yarn/patches
