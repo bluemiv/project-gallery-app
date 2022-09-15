@@ -14,6 +14,11 @@ class FileService {
   }
 
   /**
+   * Storage 경로를 반환한다.
+   */
+  getStoragePath = () => STORAGE_PATH || '';
+
+  /**
    * 입력받은 디렉토리의 경로 내부의 파일 시스템 구조를 가지고 온다.
    * @param basedir 디렉토리 경로
    * @returns [[모든 디렉토리 경로, ...], [모든 파일 경로, ...]]
@@ -24,6 +29,7 @@ class FileService {
     const files = fs.readdirSync(basedir);
     return files.reduce(
       (acc: string[][], file: string) => {
+        if (file.startsWith('.')) return acc;
         const filePath = path.join(basedir, file);
         const stat = fs.statSync(filePath);
         if (stat.isDirectory()) {

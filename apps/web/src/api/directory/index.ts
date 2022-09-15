@@ -2,4 +2,5 @@ import axios from 'axios';
 
 const prefix = process.env.REACT_APP_SERVER_BASE_URL;
 
+export const fetchDirectoryConfig = () => axios.get(`${prefix}/directory/config`);
 export const fetchDirectoryAll = () => axios.get(`${prefix}/directory`);

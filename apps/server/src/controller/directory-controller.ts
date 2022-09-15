@@ -13,7 +13,16 @@ const get: ControllerType = [
     (req, res) => {
       const [ds, _] = service.readFiles();
       return res.json({
-        results: ds,
+        count: ds?.length ?? 0,
+        results: ds || [],
+      });
+    },
+  ],
+  [
+    getPath('/config'),
+    (req, res) => {
+      return res.json({
+        results: service.getStoragePath(),
       });
     },
   ],

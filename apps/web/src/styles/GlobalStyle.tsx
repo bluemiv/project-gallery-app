@@ -39,6 +39,10 @@ const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
         background-color: ${backgroundColor};
       }
 
+      button {
+        color: ${fontColor};
+      }
+
       a {
         color: ${fontColor};
         transition: color 0.25s ease-in-out;

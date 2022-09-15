@@ -1,4 +1,4 @@
-import HomePage from './HomePage';
+import HomePage from './HomePage/HomePage';
 import GalleryPage from './GalleryPage';
 
 export { HomePage, GalleryPage };
