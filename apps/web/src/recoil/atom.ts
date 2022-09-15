@@ -6,3 +6,8 @@ export const themeState = atom({
   key: 'theme',
   default: initTheme === DARK_THEME ? DARK_THEME : LIGHT_THEME,
 });
+
+export const imageListState = atom({
+  key: 'imageList',
+  default: [],
+} as { key: string; default: any[] });

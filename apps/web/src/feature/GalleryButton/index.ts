@@ -1,18 +1,17 @@
-import InnerGalleryButton, { GalleryButtonProps } from './GalleryButton';
-import Group from './Group';
+import Group, { GalleryDataSourceType } from './Group';
 import Directory from './Directory';
+import Image from './Image';
+import type { ImageProps } from './Image/Image';
+import type { DirectoryProps } from './Directory/Directory';
 
-type InnerGalleryButtonType = typeof InnerGalleryButton;
-
-interface GalleryButtonInterface extends InnerGalleryButtonType {
+interface GalleryButtonInterface {
   Group: typeof Group;
   Directory: typeof Directory;
+  Image: typeof Image;
 }
 
-const GalleryButton = InnerGalleryButton as GalleryButtonInterface;
-GalleryButton.Group = Group;
-GalleryButton.Directory = Directory;
+const GalleryButton = { Group, Directory, Image } as GalleryButtonInterface;
 
-export type { GalleryButtonProps };
+export type { ImageProps, DirectoryProps, GalleryDataSourceType };
 
 export default GalleryButton;

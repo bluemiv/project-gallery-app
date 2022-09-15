@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-const prefix = process.env.REACT_APP_SERVER_BASE_URL;
+import { serverBaseUrl } from '../../config';
 
 const parseQueryString = (params: { [key: string]: any }) =>
   Object.keys(params)
@@ -13,4 +12,4 @@ const get = async (url: string, params: {} = {}) => {
   return res.data;
 };
 
-export const fetchFiles = (url: string = '/', params: {} = {}) => get(`${prefix}/${url}`, params);
+export const fetchFiles = (url: string = '/', params: {} = {}) => get(`${serverBaseUrl}/${url}`, params);

@@ -15,6 +15,7 @@ root.render(
           defaultOptions: {
             queries: {
               notifyOnChangeProps: 'tracked',
+              refetchOnWindowFocus: false,
             },
           },
         })

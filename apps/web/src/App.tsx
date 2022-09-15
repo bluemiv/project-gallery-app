@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import { BasicLayout } from './layout';
-import { GalleryPage, HomePage } from './pages';
+import { GalleryPage, HomePage, ImageViewerPage } from './pages';
 import { themeSelector } from './recoil/selector';
 import { FontStyle, GlobalStyle } from './styles';
 
@@ -17,8 +17,9 @@ const App = () => {
       <Routes>
         <Route element={<BasicLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="gallery" element={<GalleryPage />}>
-            <Route path=":path" />
+          <Route path="gallery">
+            <Route index element={<GalleryPage />} />
+            <Route path="image-viewer" element={<ImageViewerPage />} />
           </Route>
         </Route>
       </Routes>

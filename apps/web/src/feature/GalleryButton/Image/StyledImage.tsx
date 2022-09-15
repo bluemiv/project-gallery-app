@@ -1,13 +1,25 @@
 import styled, { css } from 'styled-components';
 
-const width = '240px';
+const size = '250px';
 
-export const StyledDirectory = styled.button`
-  width: ${width};
+export const StyledImage = styled.button`
+  width: ${size};
+  height: ${size};
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: inherit;
+
+  .image-wrapper {
+    width: 100%;
+    height: 80%;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
 
   label {
     flex: 1;
@@ -17,23 +29,18 @@ export const StyledDirectory = styled.button`
   }
 
   ${({ theme }) => {
-    const { padding, fontSize, fontColor, radius, primaryColor, transition } = theme.style;
+    const { radius, padding, fontColor, primaryColor, transition } = theme.style;
     return css`
+      padding: ${padding.sm};
       border: 1px solid ${fontColor};
       border-radius: ${radius.sm};
-      column-gap: ${padding.sm};
-      padding: ${padding.sm};
+      row-gap: ${padding.md};
       transition: ${transition()};
 
-      svg {
-        font-size: ${fontSize.lg};
-      }
-
       &:hover {
-        border: 1px solid ${primaryColor.dark};
         color: ${primaryColor.dark};
+        border: 1px solid ${primaryColor.dark};
         background-color: ${primaryColor.light};
-
         label {
           cursor: pointer;
         }
