@@ -1,5 +1,5 @@
-import photoController from './photo-controller';
+import configController from './config-controller';
 import videoController from './video-controller';
-import directoryController from './directory-controller';
+import fileController from './file-controller';
 
-export { photoController, videoController, directoryController };
+export { configController, videoController, fileController };

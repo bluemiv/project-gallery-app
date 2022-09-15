@@ -1,6 +1,6 @@
 import express from 'express';
 import cors, { CorsOptions } from 'cors';
-import { directoryController, photoController, videoController } from './controller';
+import { configController, fileController, videoController } from './controller';
 import { readConfig } from './config';
 
 const whitelist = ['http://localhost:3000', undefined];
@@ -23,9 +23,9 @@ const startServer = async () => {
   server.use(cors(corsOptions));
   server.use(express.static(STORAGE_PATH as string));
 
-  photoController['get'].map((c) => server.get(...c));
+  fileController['get'].map((c) => server.get(...c));
+  configController['get'].map((c) => server.get(...c));
   videoController['get'].map((c) => server.get(...c));
-  directoryController['get'].map((c) => server.get(...c));
 
   server.listen(SERVER_PORT, () => {
     console.log(`Start server http://localhost:${SERVER_PORT}`);

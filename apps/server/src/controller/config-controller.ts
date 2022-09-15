@@ -2,7 +2,7 @@ import { ControllerType } from '../types';
 import { parsePath } from '../utils';
 import { FileService } from '../service';
 
-const prefix = '/video';
+const prefix = '/config';
 const getPath = parsePath(prefix);
 
 const fileService = new FileService();
@@ -11,18 +11,17 @@ const get: ControllerType = [
   [
     getPath('/'),
     (req, res) => {
-      const { dir } = req?.query;
       return res.json({
-        results: [],
+        results: fileService.getStoragePath(),
       });
     },
   ],
 ];
 
-const videoController: {
+const configController: {
   [key: string]: ControllerType;
 } = {
   get,
 };
 
-export default videoController;
+export default configController;
