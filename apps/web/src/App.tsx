@@ -17,7 +17,9 @@ const App = () => {
       <Routes>
         <Route element={<BasicLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="gallery" element={<GalleryPage />} />
+          <Route path="gallery" element={<GalleryPage />}>
+            <Route path=":path" />
+          </Route>
         </Route>
       </Routes>
     </ThemeProvider>

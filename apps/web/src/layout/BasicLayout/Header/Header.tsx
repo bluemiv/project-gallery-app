@@ -5,6 +5,7 @@ import { useRecoilState } from 'recoil';
 import { themeState } from '../../../recoil/atom';
 import { DARK_THEME, LIGHT_THEME } from '../../../styles';
 import { BiMoon, BiSun } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
 
 const Header = ({ title }: HeaderProps) => {
   const [themeMode, setThemeMode] = useRecoilState(themeState);
@@ -23,10 +24,10 @@ const Header = ({ title }: HeaderProps) => {
       <nav>
         <ul>
           <li>
-            <a href="/">home</a>
+            <Link to="/">home</Link>
           </li>
           <li>
-            <a href="/setting">setting</a>
+            <Link to="/setting">setting</Link>
           </li>
         </ul>
       </nav>

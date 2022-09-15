@@ -15,9 +15,14 @@ const fontSize = {
   xl: '2rem',
 };
 
+const radius = {
+  md: '11px',
+};
+
 export const commonStyle = {
   padding,
   fontSize,
+  radius,
 };
 
 export const lightTheme = {

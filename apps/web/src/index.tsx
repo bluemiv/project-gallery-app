@@ -9,7 +9,17 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={new QueryClient()}>
+    <QueryClientProvider
+      client={
+        new QueryClient({
+          defaultOptions: {
+            queries: {
+              notifyOnChangeProps: 'tracked',
+            },
+          },
+        })
+      }
+    >
       <RecoilRoot>
         <BrowserRouter>
           <App />
