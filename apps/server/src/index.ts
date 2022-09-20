@@ -1,7 +1,9 @@
+import 'reflect-metadata';
 import express from 'express';
 import cors, { CorsOptions } from 'cors';
 import { configController, fileController, videoController } from './controller';
 import { readConfig } from './config';
+import { initDataSource } from './database/data-source';
 
 const whitelist = ['http://localhost:3000', undefined];
 const corsOptions: CorsOptions = {
@@ -16,6 +18,7 @@ const corsOptions: CorsOptions = {
 
 const startServer = async () => {
   await readConfig();
+  await initDataSource();
 
   const { SERVER_PORT, STORAGE_PATH } = process.env;
   const server = express();

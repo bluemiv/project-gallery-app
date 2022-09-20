@@ -1,6 +1,7 @@
 import { ControllerType } from '../types';
 import { parsePath } from '../utils';
 import { FileService } from '../service';
+import getDataSource from '../database/data-source';
 
 const prefix = '/file';
 const getPath = parsePath(prefix);
@@ -10,7 +11,9 @@ const service = new FileService();
 const get: ControllerType = [
   [
     getPath('/'),
-    (req, res) => {
+    async (req, res) => {
+      const dataSource = await getDataSource();
+
       const path = req?.query?.path ?? '/';
       const [ds, fs] = service.getFileList(path);
       return res.json({
