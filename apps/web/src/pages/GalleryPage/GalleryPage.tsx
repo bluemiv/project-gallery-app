@@ -28,12 +28,14 @@ const GalleryPage = () => {
     prePath: path,
   }));
   const imageList = fileList.filter(({ filename }) => fileService.isImage(filename));
+  const videoList = fileList.filter(({ filename }) => fileService.isVideo(filename));
 
   return (
     <div>
       <GalleryBreadcrumb path={path} />
       <GalleryButton.Group title="디렉토리" type="dir" dataSource={dirList} />
       <GalleryButton.Group title="이미지" type="image" dataSource={imageList} />
+      <GalleryButton.Group title="비디오" type="video" dataSource={videoList} />
     </div>
   );
 };

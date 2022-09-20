@@ -6,12 +6,13 @@ import Directory from '../Directory';
 import Image from '../Image';
 import { imageListState } from '../../../recoil/atom';
 import { urlService } from '../../../service';
+import Video from '../Video';
 
 export type GalleryDataSourceType = { filename: string; prePath: string };
 
 export interface GroupProps {
   title: string;
-  type: 'dir' | 'image';
+  type: 'dir' | 'image' | 'video';
   dataSource: GalleryDataSourceType[];
 }
 
@@ -29,15 +30,27 @@ const Group = ({ title, type, dataSource }: GroupProps) => {
           if (type === 'dir') {
             const path = prePath ? `${prePath}/${filename}` : filename;
             return <Directory key={filename} label={filename} onClick={() => navigate(`/gallery?path=${path}`)} />;
+          } else if (type === 'image') {
+            return (
+              <Image
+                key={filename}
+                src={urlService.getServerFullUrl(`${prePath}/${filename}`)}
+                label={filename}
+                onClick={() => {
+                  navigate(`/gallery/image-viewer?path=${prePath}&idx=${idx}`);
+                  setImageList(dataSource);
+                }}
+              />
+            );
           }
+          const path = prePath ? `${prePath}/${filename}` : filename;
           return (
-            <Image
+            <Video
               key={filename}
-              src={urlService.getServerFullUrl(`${prePath}/${filename}`)}
+              src={urlService.getServerFullUrl(path)}
               label={filename}
               onClick={() => {
-                navigate(`/gallery/image-viewer?path=${prePath}&idx=${idx}`);
-                setImageList(dataSource);
+                navigate(`/gallery/video-viewer?path=${path}`);
               }}
             />
           );

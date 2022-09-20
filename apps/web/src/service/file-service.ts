@@ -42,14 +42,20 @@ export const VIDEO_EXT = [
   'webm',
 ];
 
-const isImage = (filename: string) => {
+const getFileExtension = (filename: string) => {
   const filenameList = filename.toLowerCase().split('.');
-  const ext = filenameList[filenameList.length - 1];
-  return IMAGE_EXT.includes(ext);
+  if (filenameList.length === 0) return '';
+  return filenameList[filenameList.length - 1];
 };
 
+const isImage = (filename: string) => IMAGE_EXT.includes(getFileExtension(filename));
+
+const isVideo = (filename: string) => VIDEO_EXT.includes(getFileExtension(filename));
+
 const fileService = {
+  getFileExtension,
   isImage,
+  isVideo,
 };
 
 export default fileService;

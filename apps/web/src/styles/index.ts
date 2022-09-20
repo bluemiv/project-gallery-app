@@ -1,5 +1,5 @@
-import GlobalStyle from './GlobalStyle';
 import FontStyle from './FontStyle';
+import GlobalStyle from './GlobalStyle';
 
 export const LIGHT_THEME = 'light';
 export const DARK_THEME = 'dark';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { StyledBreadcrumb } from './StyledBreadcrumb';
 
@@ -15,12 +15,10 @@ const Breadcrumb = ({ dataSource }: BreadcrumbProps) => {
       {dataSource.map(({ label, path }, idx) => {
         if (idx === dataSource.length - 1) return <span key={idx}>{label}</span>;
         return (
-          <>
-            <Link key={idx} to={path}>
-              {label}
-            </Link>
+          <Fragment key={idx}>
+            <Link to={path}>{label}</Link>
             <span>/</span>
-          </>
+          </Fragment>
         );
       })}
     </StyledBreadcrumb>
