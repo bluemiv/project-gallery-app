@@ -21,7 +21,7 @@ const startServer = async () => {
   const server = express();
 
   server.use(cors(corsOptions));
-  server.use(express.static(STORAGE_PATH as string));
+  server.use('/', express.static(STORAGE_PATH as string));
 
   fileController['get'].map((c) => server.get(...c));
   configController['get'].map((c) => server.get(...c));

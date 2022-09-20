@@ -1,12 +1,13 @@
 {
   "name": "@gallery-app/server",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "packageManager": "yarn@3.2.3",
-  "main": "src/index.ts",
+  "main": "build/index.js",
   "scripts": {
     "dev": "ENV=local && nodemon -w src/ --exec ts-node src/index.ts",
     "build": "tsc",
-    "start": "yarn build && node build/index.js"
+    "build:docker": "ENV=prod && yarn build && docker build -t gallery_server:$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\", ]//g') .",
+    "start": "ENV=local && yarn build && node build/index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

@@ -1,6 +1,6 @@
 {
   "name": "gallery-app",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "packageManager": "yarn@3.2.3",
   "workspaces": {
     "packages": [
@@ -13,7 +13,11 @@
     "server": "yarn workspace @gallery-app/server",
     "prettier:all": "yarn prettier:web && yarn prettier:server",
     "prettier:web": "yarn prettier --write ./apps/web/src",
-    "prettier:server": "yarn prettier --write ./apps/server/src"
+    "prettier:server": "yarn prettier --write ./apps/server/src",
+    "prestart": "rm -rf .env && echo WEB_TAG=$(cat apps/web/package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\", ]//g') >> .env && echo SERVER_TAG=$(cat apps/server/package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\", ]//g') >> .env",
+    "start": "yarn prestart && docker-compose up -d",
+    "stop": "docker-compose down",
+    "logs": "docker-compose logs -f"
   },
   "devDependencies": {
     "prettier": "^2.7.1"
