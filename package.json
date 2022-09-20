@@ -9,7 +9,11 @@
     ]
   },
   "scripts": {
-    "server": "yarn workspace @gallery-app/server"
+    "web": "yarn workspace @gallery-app/web",
+    "server": "yarn workspace @gallery-app/server",
+    "prettier:all": "yarn prettier:web && yarn prettier:server",
+    "prettier:web": "yarn prettier --write ./apps/web/src",
+    "prettier:server": "yarn prettier --write ./apps/server/src"
   },
   "devDependencies": {
     "prettier": "^2.7.1"

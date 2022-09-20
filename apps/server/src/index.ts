@@ -1,11 +1,35 @@
 import express from 'express';
-import photoController from './controllers/photo-controller';
+import cors, { CorsOptions } from 'cors';
+import { configController, fileController, videoController } from './controller';
+import { readConfig } from './config';
 
-const server = express();
-const port = 3000;
+const whitelist = ['http://localhost:3000', undefined];
+const corsOptions: CorsOptions = {
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+};
 
-photoController['get'].map((c) => server.get(...c));
+const startServer = async () => {
+  await readConfig();
 
-server.listen(port, () => {
-  console.log(`Start server http://localhost:3000`);
-});
+  const { SERVER_PORT, STORAGE_PATH } = process.env;
+  const server = express();
+
+  server.use(cors(corsOptions));
+  server.use(express.static(STORAGE_PATH as string));
+
+  fileController['get'].map((c) => server.get(...c));
+  configController['get'].map((c) => server.get(...c));
+  videoController['get'].map((c) => server.get(...c));
+
+  server.listen(SERVER_PORT, () => {
+    console.log(`Start server http://localhost:${SERVER_PORT}`);
+  });
+};
+
+startServer();
