@@ -23,11 +23,13 @@ const startServer = async () => {
   const { SERVER_PORT, STORAGE_PATH } = process.env;
   const server = express();
 
+  server.use(express.json());
   server.use(cors(corsOptions));
   server.use('/', express.static(STORAGE_PATH as string));
 
   fileController['get'].map((c) => server.get(...c));
   configController['get'].map((c) => server.get(...c));
+  configController['post'].map((c) => server.post(...c));
   videoController['get'].map((c) => server.get(...c));
 
   server.listen(SERVER_PORT, () => {
