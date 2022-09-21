@@ -16,6 +16,14 @@ const corsOptions: CorsOptions = {
   },
 };
 
+const errorHandler = (error: any, req: any, res: any, next: any) => {
+  const [status, e] = error;
+  console.error(e.stack);
+  res.status(status).json({
+    message: e.message,
+  });
+};
+
 const startServer = async () => {
   await readConfig();
   await initDataSource();
@@ -31,6 +39,8 @@ const startServer = async () => {
   configController['get'].map((c) => server.get(...c));
   configController['post'].map((c) => server.post(...c));
   videoController['get'].map((c) => server.get(...c));
+
+  server.use(errorHandler);
 
   server.listen(SERVER_PORT, () => {
     console.log(`Start server http://localhost:${SERVER_PORT}`);

@@ -20,13 +20,10 @@ const get: ControllerType = [
 const post: ControllerType = [
   [
     getPath('/storage-path'),
-    async (req, res) => {
+    async (req, res, next) => {
       const storagePath = req?.body?.storagePath;
       if (!storagePath) {
-        res.status(400);
-        return res.json({
-          message: 'Required storage path.',
-        });
+        return next([400, new Error('Required storage path.')]);
       }
       const configRepository = getDataSource().getRepository(Config);
 
