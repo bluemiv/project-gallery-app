@@ -10,7 +10,7 @@ const GalleryPage = () => {
   const { search } = useLocation();
   const { path } = urlService.convertParams(search);
 
-  const { isLoading, isError, data, refetch } = useQuery(['file'], () => fetchFiles('file', { path }));
+  const { isLoading, isError, data, refetch } = useQuery(['file'], () => fetchFiles({ path }));
 
   useEffect(() => {
     refetch().then(console.log);

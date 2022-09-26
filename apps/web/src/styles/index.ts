@@ -27,6 +27,7 @@ export const commonStyle = {
   padding,
   fontSize,
   radius,
+  blackColor: '#212529',
   transition: (style: string = 'all') => `${style} 0.15s ease-in-out`,
 };
 
@@ -40,6 +41,10 @@ export const lightTheme = {
       light: '#dbe4ff',
       basic: '#4263eb',
       dark: '#364fc7',
+    },
+    warningColor: {
+      light: '#fff4e6',
+      basic: '#fd7e14',
     },
     boxShadow: '0 3px 24px 3px #f1f3f5',
   },
@@ -55,6 +60,10 @@ export const darkTheme = {
       light: '#dbe4ff',
       basic: '#4263eb',
       dark: '#364fc7',
+    },
+    warningColor: {
+      light: '#fff4e6',
+      basic: '#fd7e14',
     },
     boxShadow: '0 3px 24px 3px #212529',
   },
