@@ -20,22 +20,20 @@ export const StyledAlert = styled.div<StyledAlertProps>`
   }
 
   ${({ theme, type }) => {
-    const { padding, radius, fontSize, blackColor } = theme.style;
+    const { padding, radius, fontSize, fontColor } = theme.style;
 
-    const typeColor = theme.style[`${type}Color`];
+    const typeColor = theme.style[`${type}AlertColor`];
 
     return css`
-      color: ${blackColor};
-
       padding: ${padding.sm};
       border-radius: ${radius.sm};
       column-gap: ${padding.sm};
 
-      border: 1px solid ${typeColor.basic};
-      background-color: ${typeColor.light};
+      border: 1px solid ${typeColor.border};
+      background-color: ${typeColor.background};
 
       .icon {
-        color: ${typeColor.basic};
+        color: ${typeColor.border};
         font-size: ${fontSize.lg};
       }
 

@@ -42,9 +42,9 @@ export const lightTheme = {
       basic: '#4263eb',
       dark: '#364fc7',
     },
-    warningColor: {
-      light: '#fff4e6',
-      basic: '#fd7e14',
+    warningAlertColor: {
+      background: '#fff4e6',
+      border: '#fd7e14',
     },
     boxShadow: '0 3px 24px 3px #f1f3f5',
   },
@@ -61,9 +61,9 @@ export const darkTheme = {
       basic: '#4263eb',
       dark: '#364fc7',
     },
-    warningColor: {
-      light: '#fff4e6',
-      basic: '#fd7e14',
+    warningAlertColor: {
+      background: '#e67700',
+      border: '#ffd8a8',
     },
     boxShadow: '0 3px 24px 3px #212529',
   },
