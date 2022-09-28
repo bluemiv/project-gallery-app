@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { StyledInput } from './StyledInput';
 
 export interface InputProps {
-  onChange: () => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
-  label?: string;
+  label?: ReactNode;
+  width?: string;
+  defaultValue?: string | number;
 }
 
-const Input = ({ onChange, label = '', placeholder = '' }: InputProps) => {
+const Input = ({ onChange, defaultValue, label, placeholder = '', width = '100%' }: InputProps) => {
+  const renderLabel = () => {
+    if (!label) return null;
+    return <label>{label}</label>;
+  };
+
   return (
-    <StyledInput>
-      {label ? <label>{label}</label> : null}
-      <input onChange={onChange} placeholder={placeholder} />
+    <StyledInput width={width}>
+      {renderLabel()}
+      <input defaultValue={defaultValue} onChange={onChange} placeholder={placeholder} />
     </StyledInput>
   );
 };

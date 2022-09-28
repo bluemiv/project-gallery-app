@@ -28,7 +28,7 @@ export const commonStyle = {
   fontSize,
   radius,
   blackColor: '#212529',
-  transition: (style: string = 'all') => `${style} 0.15s ease-in-out`,
+  transition: (style: string = 'all') => `${style} 0.25s ease-in-out`,
 };
 
 export const lightTheme = {

@@ -8,6 +8,12 @@ export const StyledSection = styled.section`
     font-weight: bold;
   }
 
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
   ${({ theme }) => {
     const { padding, radius, boxShadow } = theme.style;
     return css`

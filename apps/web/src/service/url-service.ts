@@ -26,11 +26,17 @@ const get = async (url: string, params: {} = {}) => {
   return res.data;
 };
 
+const post = async (url: string, params: {} = {}) => {
+  const res = await axios.post(url, params);
+  return res.data;
+};
+
 const urlService = {
   convertParams,
   getServerFullUrl,
   parseQueryString,
   get,
+  post,
 };
 
 export default urlService;
